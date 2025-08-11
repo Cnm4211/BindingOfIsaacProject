@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac Randomizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/img/icon.png">
+</head>
+
+<body>
+    <div id="overlay">
+        <img src="./images/menuoverlay.png" id="img_overlay">
+        <img src="./images/menushadow.png" id="img_shadow" style="width: 378.778px">
+    </div>
+    <div id="fileButtons">
+        <button id="loadButton" type="button">Load File</button>
+        <button id="saveButton" type="button">Save File</button>
+    </div>
+    <div id="display">
+        <img src="images/page_blood.png" id="img_page">
+        <div id="solo">
+            <img src="./images/questionmark.png" id="img_charSolo">
+            <label id="img_charSoloLabel" for="img_charSolo"></label>
+            <img src="./images/questionmark.png" id="img_GoalSolo">
+        </div>
+        <div>
+            <img src="./images/randomize.png" id="img_randomizeText">
+        </div>
+        <div id="completionContainer">
+            <button id="completionButton">Completed!</button>
+        </div>
+    </div>
+    <div id="optionButtons">
+        <button id="optionButton" type="button">Options</button>
+        <div id="optionsMenu" class="optionsMenu">
+            <div class="optionsContent">
+                <div id="optionsPage" class="optionsPage">
+                    <button id="closeButton" class="closeButton">&times;</button>
+                    <h1>Options</h1>
+                    <h3>Select Character</h3>
+                    <div id="characterCarousel">
+                        <h1 id="leftButton"> &lt; </h1>
+                        <img src="./images/questionmark.png" id="carouselImage">
+                        <h1 id="rightButton"> &gt; </h1>
+                    </div>
+                    <input type="checkbox" id="taintedCheckbox"><label for="taintedCheckbox">Tainted Characters</label>
+                    <br><br>
+                    <h2>Goals</h2>
+                    <div id="goalBoxes">
+                        <div><input type="checkbox" id="Polaroid"><label for="Polaroid">Chest</label><img
+                                src="./images/Completion_Polariod_Hard.png" id="goalBoxImage"></div>
+                        <div><input type="checkbox" id="Negative"><label for="Negative">Dark Room</label><img
+                                src="./images/Completion_Negative_Hard.png" id="goalBoxImage"></div>
+                        <div><input type="checkbox" id="MegaSatan"><label for="MegaSatan">Mega Satan</label><img
+                                src="./images/Completion_Brimstone_Hard.png" id="goalBoxImage"></div>
+                        <div><input type="checkbox" id="Mother"><label for="Mother">Mother</label><img
+                                src="./images/Completion_Knife_Hard.png" id="goalBoxImage"></div>
+                        <div><input type="checkbox" id="Hush"><label for="Hush">Hush</label><img
+                                src="./images/Completion_Hush_Hard.png" id="goalBoxImage"></div>
+                        <div><input type="checkbox" id="Delirium"><label for="Delirium">Delirium</label><img
+                                src="./images/Completion_Void_Hard.png" id="goalBoxImage"></div>
+                        <div><input type="checkbox" id="BossRush"><label for="BossRush">Boss Rush</label><img
+                                src="./images/Completion_Star_Hard.png" id="goalBoxImage"></div>
+                        <div><input type="checkbox" id="Greed"><label for="Greed">Ultra Greed</label><img
+                                src="./images/Completion_Cent_Hard.png" id="goalBoxImage"></div>
+                        <div><input type="checkbox" id="Beast"><label for="Beast">The Beast</label><img
+                                src="./images/Completion_Dads_Note_Hard.png" id="goalBoxImage"></div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

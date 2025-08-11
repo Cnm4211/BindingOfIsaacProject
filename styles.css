@@ -1,0 +1,253 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    background-color: #ccbebb;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+#display {
+    max-width: max-content;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+}
+
+
+#overlay {
+    pointer-events: none;
+}
+
+#img_overlay {
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 2;
+}
+
+#img_shadow {
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    right: 60%;
+    z-index: 2;
+}
+
+#img_page {
+    max-height: 80vh;
+    height: 100vh;
+    width: auto;
+}
+
+#img_charSolo {
+    height: auto;
+    position: absolute;
+    top: 30%;
+    left: 49%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 75px;
+    max-height: 75px;
+    max-width: 50px;
+}
+
+#img_nameSolo {
+    height: auto;
+    position: absolute;
+    top: 42%;
+    left: 49%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#img_randomizeText {
+    position: absolute;
+    left: 33%;
+    bottom: 25%;
+    height: 8%;
+    width: 35%;
+    cursor: pointer;
+}
+
+#img_charSoloLabel {
+    height: auto;
+    position: absolute;
+    top: 60%;
+    left: 49%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 75px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#img_GoalSolo {
+    height: auto;
+    position: absolute;
+    top: 47%;
+    left: 49%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 75px;
+    max-height: 75px;
+    max-width: 50px;
+}
+
+#completionContainer {
+    height: auto;
+    position: absolute;
+    top: 80%;
+    left: 42%;
+}
+
+#completionButton {
+    background-color: #e1ecf4;
+    border-radius: 3px;
+    border: 1px solid #7aa7c7;
+    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #39739d;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+#completionButton:hover {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+#fileButtons{
+    position: absolute; /* Absolute positioning */
+    top: 10px;          /* Distance from the top of the viewport */
+    right: 10px;        /* Distance from the right of the viewport */
+    display: flex;      /* Align buttons horizontally */
+    gap: 10px;          /* Add spacing between buttons */
+}
+
+#loadButton{
+    height: 50px;
+    width: 100px;
+}
+
+#saveButton{
+    height: 50px;
+    width: 100px;
+}
+
+#optionButtons{
+    position: absolute;
+    top: 83%;
+    left: 47%
+}
+#optionButton{
+    height: 50px;
+    width: 100px;
+}
+
+#optionsMenu {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; 
+    z-index: 999;
+}
+#optionsMenu.show {
+    display: block;
+}
+
+#optionsContent{
+    background: white;
+    width: 80%;
+    max-width: 500px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+#closeButton {
+    position: absolute;
+    left: 10px;       /* distance from the left edge */
+    top: 7px;        /* distance from the top */
+    font-size: 24px;  /* make it large enough to click easily */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+#optionsPage{
+    position: absolute;
+    background-color: rgb(227, 207, 207);
+    left:12.5%;
+    top: 10%;
+    height: 80%;
+    width: 75%;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+
+#characterCarousel {
+    display: flex;               /* put items in a row */
+    align-items: center;         /* vertically center items */
+    justify-content: center;     /* center everything horizontally */
+    gap: 10px;                    /* space between elements */
+}
+
+#characterCarousel h1 {
+    cursor: pointer;             /* make arrows clickable */
+    user-select: none;           /* prevent text selection */
+    padding: 0px 10px; /* space around arrows */
+}
+
+#carouselImage {
+    max-height: 200px;           /* control size */
+    height: auto;
+}
+
+#goalBoxes {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 10px 20px; 
+    justify-content: center;
+    align-items: center;
+}
+
+#goalBoxes input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#goalBoxes label {
+    white-space: nowrap;
+}
+
+#goalBoxImage{
+    height: 20px;
+    width: auto;
+    margin-left: 10px;
+}
