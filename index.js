@@ -209,8 +209,6 @@ document.getElementById("taintedCheckbox").addEventListener("click", (event) => 
     currentIndex = -1;
     showImage(currentIndex);
     document.getElementById("goalBoxes").style.display = "none";
-
-    
 });
 
 function showImage(index){
@@ -230,6 +228,7 @@ function showImage(index){
     }
 }
 document.getElementById("leftButton").addEventListener("click", () => {
+    
     if (currentIndex === -1) {
         currentIndex = images.length - 1;
         document.getElementById("goalBoxes").style.display = "none";
@@ -239,14 +238,19 @@ document.getElementById("leftButton").addEventListener("click", () => {
             currentIndex = -1;
         }
     }
-
     if (currentIndex == -1){
         document.getElementById("goalBoxes").style.display = "none";
     }
     else{
         document.getElementById("goalBoxes").style.display = "grid";
     }
+
+    
+    document.querySelectorAll("#goalBoxes input[type='checkbox']").forEach(cb => {
+            cb.checked = false;
+    });
     showImage(currentIndex);
+    loadGoalBoxes();
 });
 document.getElementById("rightButton").addEventListener("click", () => {
     if (currentIndex < images.length-1){
@@ -262,21 +266,48 @@ document.getElementById("rightButton").addEventListener("click", () => {
     else{
         document.getElementById("goalBoxes").style.display = "grid";
     }
+
+    document.querySelectorAll("#goalBoxes input[type='checkbox']").forEach(cb => {
+            cb.checked = false;
+    });
     showImage(currentIndex);
+    loadGoalBoxes();
+
 });
+
 
 const goalBoxes = document.querySelectorAll('#goalBoxes input[type="checkbox"]');
 goalBoxes.forEach(checkbox => {
     checkbox.addEventListener('change', (event) => {
-        
+        console.log(`Selected Character: ${currentCharacter}`);
         console.log(`${event.target.id} checked: ${event.target.checked}`);
+        let currentCharacterMarks = characters[currentCharacter];
+        console.log(`index ${checkbox.dataset.index}`);
+
+        if (checkbox.checked){
+            currentCharacterMarks[checkbox.dataset.index] = true;
+        }
+        else if (checkbox.checked == false){
+            currentCharacterMarks[checkbox.dataset.index] = false;
+        }
+
+        console.log(`Current Marks: ${currentCharacterMarks}`);
+
         
     });
 });
+
+function loadGoalBoxes() {
+    console.log("load goal boxes check, ", currentCharacter);
+}
 
 
 
 /*
 To Do Next:
 
-Character Carosuel in the options menu that rotates between their completeion marks*/
+Now that we have a selected character, we can update that characters marks when a checkbox is checked
+
+Additionally we need to have it load any previously updated marks
+
+*/
