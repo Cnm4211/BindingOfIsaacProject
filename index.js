@@ -55,12 +55,12 @@ const goals = [
     'Polariod',
     'Negative',
     'Brimstone',
+    'Knife',
+    'Dads Note',
+    'Void',
     'Star',
     'Hush',
     'Cent',
-    'Void',
-    'Knife',
-    'Dads Note',
 ];
 
 const images = [
@@ -134,13 +134,8 @@ document.getElementById("completionButton").addEventListener("click", () => {
         alert("Randomize First!");
         return;
     }
-    console.log(selectedCharacter);
-    console.log(selectedGoal);
-    console.log(goals.indexOf(selectedGoal));
-
     const completionMarks = characters[selectedCharacter];
     completionMarks[goals.indexOf(selectedGoal)] = true;
-    console.log(completionMarks);
 });
 
 
@@ -153,7 +148,6 @@ function saveToFile(data) {
     a.download = 'completionMarks.json';
     a.click();
     URL.revokeObjectURL(url);
-    console.log("progress saved");
 }
 
 
@@ -168,7 +162,6 @@ function loadFromFile(callback) {
             reader.onload = (event) => {
                 const jsonData = JSON.parse(event.target.result);
                 const mergedData = { ...characters, ...jsonData };
-                console.log("Progress Loaded", mergedData);
                 callback(mergedData);
             };
             reader.readAsText(file);
@@ -193,11 +186,13 @@ document.getElementById("loadButton").addEventListener("click", () => {
 
 document.getElementById("optionButton").addEventListener("click", () => {
     document.getElementById('optionsMenu').classList.toggle('show');
+    imgElement.src = './images/questionmark.png';
     document.getElementById("goalBoxes").style.display = "none";
 });
 
 document.getElementById("closeButton").addEventListener("click", () => {
     document.getElementById('optionsMenu').classList.remove('show');
+    currentIndex = -1;
 });
 
 let currentIndex = -1;
@@ -279,35 +274,37 @@ document.getElementById("rightButton").addEventListener("click", () => {
 const goalBoxes = document.querySelectorAll('#goalBoxes input[type="checkbox"]');
 goalBoxes.forEach(checkbox => {
     checkbox.addEventListener('change', (event) => {
-        console.log(`Selected Character: ${currentCharacter}`);
-        console.log(`${event.target.id} checked: ${event.target.checked}`);
         let currentCharacterMarks = characters[currentCharacter];
-        console.log(`index ${checkbox.dataset.index}`);
 
         if (checkbox.checked){
             currentCharacterMarks[checkbox.dataset.index] = true;
         }
         else if (checkbox.checked == false){
             currentCharacterMarks[checkbox.dataset.index] = false;
-        }
-
-        console.log(`Current Marks: ${currentCharacterMarks}`);
-
-        
+        }        
     });
 });
 
 function loadGoalBoxes() {
-    console.log("load goal boxes check, ", currentCharacter);
+    let currentCharacterMarks = characters[currentCharacter];
+    goalBoxes.forEach( (checkbox, index) => {
+        checkbox.checked = currentCharacterMarks[index];
+    });
 }
 
 
 
 /*
+Completed:
+Load and Save
+Randomizing character and goals
+Complete button to update the goal completion
+Options Menu Open and Close
+Character Carousel with left and right buttons and Tainted Characters
+9 Checkboxes for each goal and updated the goal when clicked, saves in session but does not in between sessions as the user would need to save the file
+
+
 To Do Next:
-
-Now that we have a selected character, we can update that characters marks when a checkbox is checked
-
-Additionally we need to have it load any previously updated marks
+When a character or goal is selected but has already been completed, reroll both character and goal
 
 */

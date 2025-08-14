@@ -233,9 +233,10 @@ body {
 #goalBoxes {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    gap: 10px 20px; 
+    gap: 40px 40px; 
     justify-content: center;
     align-items: center;
+    font-size: large;
 }
 
 #goalBoxes input[type="checkbox"] {
