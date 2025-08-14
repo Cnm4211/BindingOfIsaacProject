@@ -111,21 +111,29 @@ let selectedGoal;
 
 document.getElementById("img_randomizeText").addEventListener("click", () => {
     //random Goal
-    const randomGoalNumber = Math.floor(Math.random() * goals.length);
-    const randomGoal = goals[randomGoalNumber];
-    imgGoalSolo.src = `images/Completion_${randomGoal.toLowerCase().split(" ").join("_")}_Hard.png`;
-    selectedGoal = randomGoal;
+    let randomGoalNumber = Math.floor(Math.random() * goals.length);
+    selectedGoal = goals[randomGoalNumber];
 
     //Random Character
-    const keys = Object.keys(characters);
-    const randomIndex = Math.floor(Math.random() * keys.length);
-    const randomKey = keys[randomIndex];
-    selectedCharacter = randomKey;
+    let keys = Object.keys(characters);
+    let randomIndex = Math.floor(Math.random() * keys.length);
+    selectedCharacter = keys[randomIndex];
+
+    //check if need to reroll
+    while(characters[selectedCharacter][goals.indexOf(selectedGoal)]){
+        //reroll character
+        randomIndex = Math.floor(Math.random() * keys.length);
+        selectedCharacter = keys[randomIndex];
+        //reroll goal
+        randomGoalNumber = Math.floor(Math.random() * goals.length);
+        selectedGoal = goals[randomGoalNumber];
+    }
 
     //Character Image and Label
+    imgGoalSolo.src = `images/Completion_${selectedGoal.toLowerCase().split(" ").join("_")}_Hard.png`;
     const imgSoloLabel = document.getElementById("img_charSoloLabel");
-    imgNameSolo.src = `images/Character_${randomKey.toLowerCase().split(" ").join("_")}_appearance.png`;
-    imgSoloLabel.textContent = randomKey;
+    imgNameSolo.src = `images/Character_${selectedCharacter.toLowerCase().split(" ").join("_")}_appearance.png`;
+    imgSoloLabel.textContent = selectedCharacter;
 });
 
 
@@ -302,9 +310,11 @@ Complete button to update the goal completion
 Options Menu Open and Close
 Character Carousel with left and right buttons and Tainted Characters
 9 Checkboxes for each goal and updated the goal when clicked, saves in session but does not in between sessions as the user would need to save the file
+When a character or goal is selected but has already been completed, reroll both character and goal
 
 
 To Do Next:
-When a character or goal is selected but has already been completed, reroll both character and goal
+test random to see if it gets all characters
+test reroll
 
 */
